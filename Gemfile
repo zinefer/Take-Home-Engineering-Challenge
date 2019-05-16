@@ -71,6 +71,10 @@ group :test do
   gem 'webdrivers'
   # Code coverage
   gem 'simplecov'
+  # Factorybot to simplify model testing
+  gem 'factory_bot_rails'
+  # Help generate test data
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
