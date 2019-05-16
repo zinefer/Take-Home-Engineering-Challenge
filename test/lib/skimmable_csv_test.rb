@@ -63,4 +63,22 @@ class SkimmableCSVTest < ActionDispatch::IntegrationTest
       assert_equal 12, row_count, 'row count is as expected'
     end
   end
+
+  test 'it can sample a file' do
+    data = ['battletoads,game,oftheyear']
+
+    100.times do |x|
+      data << ["#{x},#{x},#{x}"]
+    end
+
+    temp_file data do |file|
+      row_count = 0
+
+      SkimmableCSV.process(file.path, sample_size: 24) do |chunk|
+        row_count += chunk.count
+      end
+
+      assert_equal 24, row_count, 'row count is as expected'
+    end
+  end
 end
