@@ -57,6 +57,7 @@ class SkimmableCSV
       # Zip the data with the headers and add it to the chunk
       chunk << headers.zip(data).to_h
 
+      # Move on unless the chunk is ready to be output
       next unless chunk.size >= chunk_size || file.eof?
 
       # Pass the block our rows and reset

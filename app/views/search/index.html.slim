@@ -1,3 +1,12 @@
+.box
+  .columns
+    - if @trips_pie
+      .column.is-one-third
+        = pie_chart @trips_pie, colors: ["#3366CC", "#109618", "#E9DA1E"]
+    .column
+      = line_chart @trips_line
+
+
 = form_with url: root_path, method: :get, local: true do |form|
   .box
     .columns
@@ -15,13 +24,14 @@
           = form.select :drop_off_borough, @boroughs.map(&:option_for_select), selected: params[:drop_off_borough], include_blank: true
       .column
         label.label Pick Up Time
-        .field.is-grouped
-          .select
-            .control
+        .field.has-addons
+          .control
+            .select
               = form.select :pick_up_day, Trip.day_of_week_options, selected: params[:pick_up_day], include_blank: true
-          label.label At
-          .select
-            .control
+          .control
+            .button.is-static At
+          .control
+            .select
               = form.select :pick_up_time, Trip.time_of_day_options, selected: params[:pick_up_time], include_blank: true
       .column
         label.label &nbsp;
