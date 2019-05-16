@@ -11,6 +11,8 @@ def each_as_csv(file)
   # Number of lines in file
   total_trips = File.foreach(tripdata_csv_path).count - 1
 
+  progress = ProgressBar.create(title: "Import #{file}", total: total_trips, format: '[%a] %B [%p%%] %t', length: 100)
+
   CSV.foreach(tripdata_csv_path, headers: true) do |row|
     yield(row)
 
