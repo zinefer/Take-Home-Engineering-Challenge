@@ -22,7 +22,7 @@ Other Decisions that I'd like to point out:
 
 - I like minitest over rspec
 - I usually use Bootstrap but I want to try out [Bulma](https://bulma.io) for this challenge
-
+- I tried using the Ruby CSV built-in but the data wasn't strict enough. I tried the smarter_csv gem but it left some features to be desired.
 
 ### Branding
 
@@ -37,6 +37,28 @@ Other Decisions that I'd like to point out:
 ```bash
 $ bundle install
 $ rails db:create db:setup
+```
+
+### Seeding
+
+You can seed the database with a presampled set of January 2018 data by just running
+
+```bash
+$ rails db:seed
+```
+
+#### Or
+
+If you want to do a full data import or sample it yourself, place your `csv` files inside `db/data`. A `taxi+_zone_lookup.csv` is required and expected. Trip data file names should be formatted like `{trip_type}_tripdata_{year}_{month}.csv`
+
+Then, use the `db:seed:data` task to parse and import:
+```bash
+$ rails db:seed:data
+```
+
+To sample the data, define a `TRIPDATA_SAMPLE` environment variable:
+```bash
+$ rails db:seed:data TRIPDATA_SAMPLE=10000
 ```
 
 ## Run
