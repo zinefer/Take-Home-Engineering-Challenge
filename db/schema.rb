@@ -22,14 +22,15 @@ ActiveRecord::Schema.define(version: 20_190_516_210_826) do
   end
 
   create_table 'trips', force: :cascade do |t|
-    t.integer 'type'
+    t.integer 'vehicle_type'
     t.datetime 'pick_up_time'
     t.datetime 'drop_off_time'
     t.integer 'pick_up_borough_id'
-    t.datetime 'drop_off_burough'
+    t.integer 'drop_off_borough_id'
     t.float 'fare'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['drop_off_borough_id'], name: 'index_trips_on_drop_off_borough_id'
     t.index ['pick_up_borough_id'], name: 'index_trips_on_pick_up_borough_id'
   end
 end
