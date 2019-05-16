@@ -24,6 +24,8 @@ gem 'slim-rails'
 gem 'bulma-rails', '~> 0.7.4'
 # Font-awesome icons
 gem 'font-awesome-rails'
+# Pagination helper
+gem 'kaminari'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -1,2 +1,19 @@
-h1 Search#index
-p Find me in app/views/search/index.html.slim
+table.table.is-fullwidth.is-striped.is-hoverable
+  thead
+    tr
+      th Type
+      th Appx Pickup
+      th Pickup Location
+      th Dropoff Location
+      th Duration
+
+  tbody
+    - @trips.each do |trip|
+      tr
+        td = trip.vehicle_type
+        th = trip.pick_up_time.strftime '~%l%p'
+        th = trip.pick_up_borough.name if trip.pick_up_borough
+        th = trip.drop_off_borough.name if trip.drop_off_borough
+        td = distance_of_time_in_words trip.pick_up_time, trip.drop_off_time
+
+= paginate @trips
