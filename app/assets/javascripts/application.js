@@ -14,3 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener('click', function (event) {
+  if (event.target.matches('.delete')) {
+    event.target.parentNode.style.display = 'none';
+  }
+}, false);
