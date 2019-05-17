@@ -30,6 +30,8 @@ Other Decisions that I'd like to point out:
 
 ## Setup
 
+`Rails v5.2.3` `Ruby v2.5.3` `Bundler v2.0.1`
+
 - Clone repository
 - Install bundler
 
