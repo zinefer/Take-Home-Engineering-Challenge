@@ -57,6 +57,6 @@ class SearchTest < ApplicationSystemTestCase
 
     new_row_count = all('table.table tr').count
 
-    assert_operator new_row_count, :<, 25
+    assert_operator new_row_count, :<, 30
   end
 end
