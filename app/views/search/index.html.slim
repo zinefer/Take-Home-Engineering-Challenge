@@ -1,2 +1,62 @@
-h1 Search#index
-p Find me in app/views/search/index.html.slim
+.box
+  .columns
+    - if @trips_pie
+      .column.is-one-third
+        = pie_chart @trips_pie, colors: ["#3366CC", "#109618", "#E9DA1E"]
+    .column
+      = line_chart @trips_line
+
+
+= form_with url: root_path, method: :get, local: true do |form|
+  .box
+    .columns
+      .column
+        label.label Type
+        .select
+          = form.select :vehicle_type, Trip.vehicle_types.keys.to_a.map!(&:titleize), selected: params[:vehicle_type], include_blank: true
+      .column
+        label.label Pick Up Location
+        .select
+          = form.select :pick_up_borough, @boroughs.map(&:option_for_select), selected: params[:pick_up_borough], include_blank: true
+      .column
+        label.label Drop Off Location
+        .select
+          = form.select :drop_off_borough, @boroughs.map(&:option_for_select), selected: params[:drop_off_borough], include_blank: true
+      .column
+        label.label Pick Up Time
+        .field.has-addons
+          .control
+            .select
+              = form.select :pick_up_day, Trip.day_of_week_options, selected: params[:pick_up_day], include_blank: true
+          .control
+            .button.is-static At
+          .control
+            .select
+              = form.select :pick_up_time, Trip.time_of_day_options, selected: params[:pick_up_time], include_blank: true
+      .column
+        label.label &nbsp;
+        = link_to 'Reset', root_path, class: 'button'
+        span &nbsp;
+        = form.submit 'Search', class: 'button is-primary'
+
+br
+
+table.table.is-fullwidth.is-striped.is-hoverable
+  thead
+    tr
+      th Type
+      th Appx Pickup
+      th Pickup Location
+      th Dropoff Location
+      th Duration
+
+  tbody
+    - @trips.each do |trip|
+      tr
+        td = trip.vehicle_type.titleize
+        th = trip.pick_up_time.strftime '~%l%p' if trip.pick_up_time
+        th = trip.pick_up_borough.whole_name if trip.pick_up_borough
+        th = trip.drop_off_borough.whole_name if trip.drop_off_borough
+        td = distance_of_time_in_words trip.pick_up_time, trip.drop_off_time if trip.pick_up_time && trip.drop_off_time
+
+= paginate @trips
