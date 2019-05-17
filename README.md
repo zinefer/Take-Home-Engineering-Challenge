@@ -89,3 +89,6 @@ Running the system tests on a Windows (WSL) machine requires a little bit of hoo
 - Click on values in the table to put them in the filter box
 - Graph each type as a different series
 - Test the charts in system tests
+- Sort table columns
+- Dry out Search index with a FormBuilder
+- Add Drop off day and time filter
