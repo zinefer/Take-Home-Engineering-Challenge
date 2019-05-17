@@ -1,7 +1,6 @@
 # Take Home Engineering Challenge
 
 ## :oncoming_taxi: triphelper.nyc
-
 ![Build Status](https://travis-ci.com/zinefer/Take-Home-Engineering-Challenge.svg?branch=master)
 
 I am going to use Ruby and Rails on this project due to the extreme time constraint. Rails will allow me to leverage a ton of web application convention to speed up my development. However, 3 hours is not much time to put all the skills I've gained over the past 8 years on display. As such, I am going to relax these of my development processies for this challenge:
@@ -26,8 +25,8 @@ Other Decisions that I'd like to point out:
 
 ### Branding
 
-[Color palette](https://coolors.co/ffdd57-fe5f55-d6d1b1-c7efcf-eef5db)
-[Fonts](https://fonts.google.com/specimen/Baloo+Bhai?selection.family=Baloo+Bhai|Roboto)
+- [Color palette](https://coolors.co/ffdd57-fe5f55-d6d1b1-c7efcf-eef5db)
+- [Fonts](https://fonts.google.com/specimen/Baloo+Bhai?selection.family=Baloo+Bhai|Roboto)
 
 ## Setup
 
@@ -82,3 +81,11 @@ Running the system tests on a Windows (WSL) machine requires a little bit of hoo
 - Comment out webdrivers in Gemfile
 - - The WSL is a little too good at hiding the fact that we're on windows, so it's a difficult to detect inside the gemfile. Thinking about it now I wonder if we could look for a windows specific file on the FS to detect this.
 - Follow [This](http://ngauthier.com/2017/09/rails-system-tests-with-headless-chrome-on-windows-bash-wsl.html)
+
+## Going further
+
+- Dry out models and controllers
+- Test the hash outputs of the CSV parser
+- Click on values in the table to put them in the filter box
+- Graph each type as a different series
+- Test the charts in system tests
